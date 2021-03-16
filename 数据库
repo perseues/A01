@@ -1,0 +1,154 @@
+2.5 物理设计
+2.5.1表汇总
+MySQL：
+
+表4-1管理员表（root_inf）
+字段名称	类型	长度	主外键	能否为空	说明
+loginname	varchar	20	主键	否	登录名
+password	varchar	20		否	登录密码
+username	varchar	20		否	用户名
+DROP TABLE IF EXISTS `root_inf`;
+CREATE TABLE `root_inf`  (
+  `loginname` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`loginname`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+表4-2用户表（user_inf）
+字段名称	类型	长度	主外键	能否为空	说明
+Id	int	11	主键	否	ID，自增
+loginname	varchar	20		能	登录
+password	varchar	20		否	登录密码
+username	varchar	20		否	用户名
+userphone	varchar	11		能	用户电话号码
+userschool	varchar	10		能	用户毕业学校
+userage	varchar	3		能	用户年龄
+userinstruction	varchat	100		能	用户介绍
+DROP TABLE IF EXISTS `user_inf`;
+CREATE TABLE `user_inf`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `loginname` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `userphone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `userschool` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `userage` varchar(3) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `userinstruction` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;	
+表4-3职员表（employee_inf）
+字段名称	类型	长度	主外键	能否为空	说明
+id	int	11	主键	否	数据ID，自增
+dept-id	int	20	外键	能	部门id
+job_id	int	15	外键	能	职位id
+name	Varchar	20		能	姓名
+card_id	integer	20		否	身份证号码
+address	Varchar	50		否	地址
+post_code	Varchar	20		能	邮政编码
+tel	Varchar	20		能	固定电话
+phone	Varchar	11		能	手机
+salary	Varchar	10		能	工资
+email	Varchar	50		能	邮箱
+sex	int	11		能	性别
+party	Varchar	10		能	生份
+age	Varchar	3		能	年龄
+race	Varchar	100		能	宗教
+education	Varchar	10		能	学历
+specially	Varchar	20		能	特点
+hobby	Varchar	100		能	爱好
+remark	Varchar	500		能	描述
+DROP TABLE
+IF
+	EXISTS `employee_inf`;
+CREATE TABLE `employee_inf` (
+	`id` INT ( 11 ) NOT NULL AUTO_INCREMENT,
+	`dept_id` INT ( 11 ) NULL DEFAULT NULL,
+	`job_id` INT ( 11 ) NULL DEFAULT NULL,
+	`name` VARCHAR ( 20 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`card_id` VARCHAR ( 20 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`address` VARCHAR ( 50 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`post_code` VARCHAR ( 50 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`tel` VARCHAR ( 20 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`phone` VARCHAR ( 11 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`salary` VARCHAR ( 10 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`email` VARCHAR ( 50 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`sex` INT ( 11 ) NOT NULL,
+	`party` VARCHAR ( 10 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`age` VARCHAR ( 3 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`race` VARCHAR ( 100 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`education` VARCHAR ( 10 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`speciality` VARCHAR ( 20 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`hobby` VARCHAR ( 100 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`remark` VARCHAR ( 500 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	PRIMARY KEY ( `id` ) USING BTREE 
+) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER 
+SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+表4-4部门表（dept_inf）
+字段名称	类型	长度	主外键	能否为空	说明
+id	int	11	主键	否	id
+name	varchar	50		否	名称
+remark	varchar	300		否	标志
+DROP TABLE
+IF
+	EXISTS `dept_inf`;
+CREATE TABLE `dept_inf` (
+	`id` INT ( 11 ) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR ( 50 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`remark` VARCHAR ( 300 ) CHARACTER 
+	SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	PRIMARY KEY ( `id` ) USING BTREE 
+) ENGINE = MyISAM AUTO_INCREMENT = 31 CHARACTER 
+SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;-
+表4-5职位表（job_inf）
+字段名称	类型	长度	主外键	能否为空	说明
+id	int	11	主键	否	id
+name	varchar	50		否	名称
+remark	varchar	300		否	标志
+DROP TABLE IF EXISTS `job_inf`;
+CREATE TABLE `job_inf`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `remark` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+表4-6招聘表（notice_inf）
+字段名称	类型	长度	主外键	能否为空	说明
+id	int	11	主键	否	id
+name	varchar	50		否	名称
+remark	text			否	标志
+DROP TABLE IF EXISTS `notice_inf`;
+CREATE TABLE `notice_inf`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+表4-1投递表（toudi_inf）
+字段名称	类型	长度	主外键	能否为空	说明
+noticeid	int	11		否	招聘id
+userid	int	11		否	用户id
+
+
+DROP TABLE IF EXISTS `toudi_inf`;
+CREATE TABLE `toudi_inf`  (
+  `noticeid` int(11) NOT NULL,
+  `userid` int(11) NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
